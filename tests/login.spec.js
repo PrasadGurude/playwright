@@ -1,5 +1,6 @@
 const {test , expect} = require('@playwright/test');
 
+
 test("valid login", async function ({page}){
     await page.goto('https://www.saucedemo.com/');
     await page.waitForTimeout(5000)
@@ -17,7 +18,6 @@ test("invalid login", async function ({page}){
     await page.waitForTimeout(5000)
     await page.getByPlaceholder('Username').fill('standard_user');
     await page.getByPlaceholder('Password').fill('wrong_password');
-
     await page.locator('#login-button').click();
     await page.waitForTimeout(5000)
     await expect(page).toHaveURL('https://www.saucedemo.com/');
